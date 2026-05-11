@@ -8,6 +8,7 @@
             <th>Title</th>
             <th>Status</th>
             <th>Due Date</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
@@ -16,7 +17,8 @@
             <tr>
                 <td>@task.Title</td>
                 <td>@task.Status</td>
-                <td>@task.DueDate</td>
+                <td>@task.DueDate.ToString("dd/MM/yyyy")</td>
+                <td>@task.Description</td>
             </tr>
         }
     </tbody>
