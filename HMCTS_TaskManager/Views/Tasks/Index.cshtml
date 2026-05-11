@@ -1,0 +1,23 @@
+﻿@model IEnumerable<HMCTS_TaskManager.Models.TaskItem>
+
+<h1>Tasks</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Due Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var task in Model)
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.Status</td>
+                <td>@task.DueDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
