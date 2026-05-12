@@ -1,0 +1,16 @@
+﻿@model HMCTS_TaskManager.Models.TaskItem
+
+<h1>Update Task Status</h1>
+
+<form asp-action="Edit" method="post">
+
+  <input type="hidden" asp-for="Id" />
+
+  <div class="mb-3">
+    <label asp-for="Status"></label>
+    <input asp-for="Status" class="form-control" />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Update Status</button>
+
+</form>
