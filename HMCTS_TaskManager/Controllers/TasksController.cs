@@ -33,6 +33,35 @@ namespace HMCTS_TaskManager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Edit(TaskItem task)
+        {
+            TaskItem? existingTask = await _dbContext.Tasks.FindAsync(task.Id);
+
+            if (existingTask == null)
+            {
+                return NotFound();
+            }
+
+            existingTask.Status = task.Status;
+
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            TaskItem? task = await _dbContext.Tasks.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return View(task);
+        }
+
         public async Task<IActionResult> Index()
         {
             List<Models.TaskItem> tasks = await _dbContext.Tasks.ToListAsync();
