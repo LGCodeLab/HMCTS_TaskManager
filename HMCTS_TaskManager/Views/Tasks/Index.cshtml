@@ -3,23 +3,25 @@
 <h1>Tasks</h1>
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Due Date</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var task in Model)
-        {
-            <tr>
-                <td>@task.Title</td>
-                <td>@task.Status</td>
-                <td>@task.DueDate.ToString("dd/MM/yyyy")</td>
-                <td>@task.Description</td>
-            </tr>
-        }
-    </tbody>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Due Date</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var task in Model)
+    {
+      <tr>
+        <td>@task.Title</td>
+        <td>@task.Status</td>
+        <td>@task.DueDate.ToString("dd/MM/yyyy")</td>
+        <td>@task.Description</td>
+        <td><a asp-action="Edit" asp-route-id="@task.Id">Update Status</a></td>
+      </tr>
+    }
+  </tbody>
 </table>
