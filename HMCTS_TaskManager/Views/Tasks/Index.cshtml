@@ -20,7 +20,11 @@
         <td>@task.Status</td>
         <td>@task.DueDate.ToString("dd/MM/yyyy")</td>
         <td>@task.Description</td>
-        <td><a asp-action="Edit" asp-route-id="@task.Id">Update Status</a></td>
+        <td>
+          <a asp-action="Edit" asp-route-id="@task.Id">Update Status</a>
+          |
+          <a asp-action="Delete" asp-route-id="@task.Id">Delete</a>
+        </td>
       </tr>
     }
   </tbody>
