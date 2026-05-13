@@ -33,6 +33,35 @@ namespace HMCTS_TaskManager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Delete(int id)
+        {
+            TaskItem? task = await _dbContext.Tasks.FindAsync(id);
+
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return View(task);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            TaskItem? taskToDelete = await _dbContext.Tasks.FindAsync(id);
+
+            if (taskToDelete == null)
+            {
+                return NotFound();
+            }
+
+            _dbContext.Tasks.Remove(taskToDelete);
+
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Edit(TaskItem task)
         {
