@@ -21,12 +21,6 @@ namespace HMCTS_TaskManager.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TaskItem task)
         {
-            // TODO: Is this check needed now validating Model? Field is Required
-            if (string.IsNullOrWhiteSpace(task.Status))
-            {
-                task.Status = "ToDo";
-            }
-
             if (!ModelState.IsValid)
             {
                 return View(task);

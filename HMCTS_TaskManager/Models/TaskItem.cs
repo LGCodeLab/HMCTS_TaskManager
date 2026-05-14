@@ -13,9 +13,8 @@ namespace HMCTS_TaskManager.Models
         [StringLength(500)]
         public string? Description { get; set; }
 
-        // TODO: Do we need the default value here also?
         [Required]
-        public string Status { get; set; } = "ToDo";
+        public string Status { get; set; } = string.Empty;
 
         [Required]
         public DateTime DueDate { get; set; }
