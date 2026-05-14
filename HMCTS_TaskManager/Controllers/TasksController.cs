@@ -72,6 +72,15 @@ namespace HMCTS_TaskManager.Controllers
                 return NotFound();
             }
 
+            // Inaccurate validation message displays on /Tasks/Edit unless Title is removed
+            // from Model.
+            ModelState.Remove("Title");
+
+            if (!ModelState.IsValid)
+            {
+                return View(task);
+            }
+
             existingTask.Status = task.Status;
 
             await _dbContext.SaveChangesAsync();
