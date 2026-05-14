@@ -21,9 +21,9 @@ namespace HMCTS_TaskManager.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TaskItem task)
         {
-            if (string.IsNullOrWhiteSpace(task.Status))
+            if (!ModelState.IsValid)
             {
-                task.Status = "ToDo";
+                return View(task);
             }
 
             _dbContext.Tasks.Add(task);
@@ -70,6 +70,15 @@ namespace HMCTS_TaskManager.Controllers
             if (existingTask == null)
             {
                 return NotFound();
+            }
+
+            // Inaccurate validation message displays on /Tasks/Edit unless Title is removed
+            // from Model.
+            ModelState.Remove("Title");
+
+            if (!ModelState.IsValid)
+            {
+                return View(task);
             }
 
             existingTask.Status = task.Status;
