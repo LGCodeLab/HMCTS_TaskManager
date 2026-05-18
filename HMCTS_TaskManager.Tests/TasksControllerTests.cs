@@ -34,6 +34,30 @@ namespace HMCTS_TaskManager.Tests
         }
 
         [Fact]
+        public async Task Create_Post_SavesTaskToDatabase()
+        {
+            // Arrange.
+            TaskManagerDbContext dbContext = GetDbContext();
+            TasksController tasksController = new TasksController(dbContext);
+
+            TaskItem newTask = new TaskItem
+            {
+                Title = "New Task",
+                Status = "ToDo",
+                DueDate = DateTime.Today,
+            };
+
+            // Act.
+            await tasksController.Create(newTask);
+
+            List<TaskItem> tasksInDb = dbContext.Tasks.ToList();
+
+            // Assert.
+            Assert.Single(tasksInDb);
+            Assert.Equal("New Task", tasksInDb.First().Title);
+        }
+
+        [Fact]
         public async Task Index_Returns_View()
         {
             // Arrange.
