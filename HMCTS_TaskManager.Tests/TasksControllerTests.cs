@@ -20,6 +20,20 @@ namespace HMCTS_TaskManager.Tests
         }
 
         [Fact]
+        public void Create_Get_Returns_View()
+        {
+            // Arrange.
+            TaskManagerDbContext dbContext = GetDbContext();
+            TasksController tasksController = new TasksController(dbContext);
+
+            // Act.
+            IActionResult result = tasksController.Create();
+
+            // Assert.
+            Assert.IsType<ViewResult>(result);
+        }
+
+        [Fact]
         public async Task Index_Returns_View()
         {
             // Arrange.
