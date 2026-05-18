@@ -1,4 +1,5 @@
 ﻿@model HMCTS_TaskManager.Models.TaskItem
+@using HMCTS_TaskManager.Constants
 
 <h1>Create Task</h1>
 
@@ -19,9 +20,18 @@
   </div>
 
   <div class="mb-3">
+
     <label asp-for="Status" class="form-label"></label>
-    <input asp-for="Status" class="form-control" />
+    <select asp-for="Status" class="form-select">
+      <option value="">-- Select Status --</option>
+      @foreach (var status in TaskStatuses.All)
+      {
+        <option value="@status">@status</option>
+      }
+    </select>
+
     <span asp-validation-for="Status" class="text-danger"></span>
+
   </div>
 
   <div class="mb-3">
