@@ -58,6 +58,28 @@ namespace HMCTS_TaskManager.Tests
         }
 
         [Fact]
+        public async Task Create_Post_ValidTask_RedirectsToIndex()
+        {
+            // Arrange.
+            TaskManagerDbContext dbContext = GetDbContext();
+            TasksController tasksController = new TasksController(dbContext);
+
+            TaskItem newTask = new TaskItem
+            {
+                Title = "New Task",
+                Status = "ToDo",
+                DueDate = DateTime.Today,
+            };
+
+            // Act.
+            IActionResult result = await tasksController.Create(newTask);
+
+            // Assert.
+            RedirectToActionResult redirect = Assert.IsType<RedirectToActionResult>(result);
+            Assert.Equal("Index", redirect.ActionName);
+        }
+
+        [Fact]
         public async Task Index_Returns_View()
         {
             // Arrange.
