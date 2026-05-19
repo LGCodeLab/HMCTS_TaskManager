@@ -80,7 +80,7 @@ namespace HMCTS_TaskManager.Tests
         }
 
         [Fact]
-        public async Task Edit_Get_Returns_View_When_TaskEdited()
+        public async Task Edit_Get_Returns_View_When_TaskExists()
         {
             // Arrange.
             TaskManagerDbContext dbContext = GetDbContext();
