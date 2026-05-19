@@ -105,6 +105,20 @@ namespace HMCTS_TaskManager.Tests
         }
 
         [Fact]
+        public async Task Edit_Get_Returns_NotFound_When_TaskDoesntExist()
+        {
+            // Arrange.
+            TaskManagerDbContext dbContext = GetDbContext();
+            TasksController tasksController = new TasksController(dbContext);
+
+            // Act.
+            IActionResult result = await tasksController.Edit(111);
+
+            // Assert.
+            Assert.IsType<NotFoundResult>(result);
+        }
+
+        [Fact]
         public async Task Index_Returns_View()
         {
             // Arrange.
