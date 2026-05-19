@@ -80,6 +80,31 @@ namespace HMCTS_TaskManager.Tests
         }
 
         [Fact]
+        public async Task Edit_Get_Returns_View_When_TaskEdited()
+        {
+            // Arrange.
+            TaskManagerDbContext dbContext = GetDbContext();
+
+            TaskItem existingTask = new TaskItem
+            {
+                Title = "Existing Task",
+                Status = "ToDo",
+                DueDate = DateTime.Today,
+            };
+
+            dbContext.Tasks.Add(existingTask);
+            dbContext.SaveChanges();
+
+            TasksController tasksController = new TasksController(dbContext);
+
+            // Act.
+            IActionResult result = await tasksController.Edit(existingTask.Id);
+
+            // Assert.
+            Assert.IsType<ViewResult>(result);
+        }
+
+        [Fact]
         public async Task Index_Returns_View()
         {
             // Arrange.
