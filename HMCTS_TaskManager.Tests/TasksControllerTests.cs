@@ -115,7 +115,7 @@ namespace HMCTS_TaskManager.Tests
             };
 
             dbContext.Tasks.Add(taskToBeDeleted);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             TasksController tasksController = new TasksController(dbContext);
 
@@ -140,7 +140,7 @@ namespace HMCTS_TaskManager.Tests
             };
 
             dbContext.Tasks.Add(existingTask);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
             TasksController tasksController = new TasksController(dbContext);
 
