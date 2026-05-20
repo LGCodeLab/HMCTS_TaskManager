@@ -152,7 +152,7 @@ namespace HMCTS_TaskManager.Tests
         }
 
         [Fact]
-        public async Task Edit_Get_Returns_NotFound_When_TaskDoesntExist()
+        public async Task Edit_Get_Returns_NotFound_When_TaskDoesNotExist()
         {
             // Arrange.
             TaskManagerDbContext dbContext = GetDbContext();
