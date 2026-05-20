@@ -80,6 +80,28 @@ namespace HMCTS_TaskManager.Tests
         }
 
         [Fact]
+        public async Task Create_Post_InvalidModelState_Returns_View()
+        {
+            // Arrange.
+            TaskManagerDbContext dbContext = GetDbContext();
+            TasksController tasksController = new TasksController(dbContext);
+
+            tasksController.ModelState.AddModelError("Title", "Title is required");
+
+            TaskItem invalidTask = new TaskItem
+            {
+                Status = "ToDo",
+                DueDate = DateTime.Today
+            };
+
+            // Act.
+            IActionResult result = await tasksController.Create(invalidTask);
+
+            // Assert.
+            Assert.IsType<ViewResult>(result);
+        }
+
+        [Fact]
         public async Task Delete_Removes_Task()
         {
             // Arrange.
