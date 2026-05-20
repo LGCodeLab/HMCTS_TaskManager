@@ -80,6 +80,31 @@ namespace HMCTS_TaskManager.Tests
         }
 
         [Fact]
+        public async Task Delete_Removes_Task()
+        {
+            // Arrange.
+            TaskManagerDbContext dbContext = GetDbContext();
+
+            TaskItem taskToBeDeleted = new TaskItem
+            {
+                Title = "To be Deleted",
+                Status = "Completed",
+                DueDate = DateTime.Today,
+            };
+
+            dbContext.Tasks.Add(taskToBeDeleted);
+            dbContext.SaveChanges();
+
+            TasksController tasksController = new TasksController(dbContext);
+
+            // Act.
+            await tasksController.DeleteConfirmed(taskToBeDeleted.Id);
+
+            // Assert.
+            Assert.Empty(dbContext.Tasks);
+        }
+
+        [Fact]
         public async Task Edit_Get_Returns_View_When_TaskExists()
         {
             // Arrange.
