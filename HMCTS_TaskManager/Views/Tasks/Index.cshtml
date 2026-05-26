@@ -47,7 +47,18 @@ else
           </td>
 
           <td>@task.DueDate.ToString("dd/MM/yyyy")</td>
-          <td>@task.Description</td>
+
+          <td>
+            @if (string.IsNullOrWhiteSpace(task.Description))
+            {
+              <span class="text-muted">No description provided.</span>
+            }
+            else
+            {
+              @task.Description
+            }
+          </td>
+
           <td>
             <a asp-action="Edit"
                asp-route-id="@task.Id"
