@@ -2,18 +2,20 @@
 
 <h1 class="mb-4">Delete Task</h1>
 
-<p class="text-danger mb-4">
+<p class="text-danger fw-bold mb-4">
   Are you sure you want to delete this task?
 </p>
 
 <div class="mb-4">
 
-  <div class="mb-2">
-    <strong>Title:</strong> @Model.Title
+  <div>
+    <span class="text-muted">Title:</span>
+    <strong>@Model.Title</strong>
   </div>
 
-  <div class="mb-2">
-    <strong>Status:</strong> @Model.Status
+  <div>
+    <span class="text-muted">Status:</span>
+    <strong>@Model.Status</strong>
   </div>
 
 </div>
@@ -22,7 +24,7 @@
 
   <input type="hidden" asp-for="Id" />
 
-  <button type="submit" class="btn btn-danger">
+  <button type="submit" class="btn btn-danger me-2">
     Delete Task
   </button>
 
