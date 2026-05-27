@@ -22,7 +22,7 @@
     <label asp-for="Status" class="form-label"></label>
 
     <select asp-for="Status" class="form-select">
-      <option value="">-- Select Status --</option>
+      <option value="">Select a status...</option>
       @foreach (var status in TaskStatuses.All)
       {
         <option value="@status">@status</option>
@@ -42,7 +42,7 @@
     Create Task
   </button>
 
-  <a asp-action="Index" class="btn btn-secondary">
+  <a asp-action="Index" class="btn btn-secondary ms-2">
     Cancel
   </a>
 
