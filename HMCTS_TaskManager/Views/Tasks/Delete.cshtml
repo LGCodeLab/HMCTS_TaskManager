@@ -1,16 +1,21 @@
 ﻿@model HMCTS_TaskManager.Models.TaskItem
 
-<h1>Delete Task</h1>
-<p>
+<h1 class="mb-4">Delete Task</h1>
+
+<p class="text-danger mb-4">
   Are you sure you want to delete this task?
 </p>
 
-<div>
-  <strong>Title:</strong>@Model.Title
-</div>
+<div class="mb-4">
 
-<div>
-  <strong>Status:</strong>@Model.Status
+  <div class="mb-2">
+    <strong>Title:</strong> @Model.Title
+  </div>
+
+  <div class="mb-2">
+    <strong>Status:</strong> @Model.Status
+  </div>
+
 </div>
 
 <form asp-action="DeleteConfirmed" method="post">
@@ -18,7 +23,7 @@
   <input type="hidden" asp-for="Id" />
 
   <button type="submit" class="btn btn-danger">
-    Delete
+    Delete Task
   </button>
 
   <a asp-action="Index" class="btn btn-secondary">

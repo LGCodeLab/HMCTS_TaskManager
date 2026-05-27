@@ -1,17 +1,17 @@
 ﻿@model HMCTS_TaskManager.Models.TaskItem
 @using HMCTS_TaskManager.Constants
 
-<h1>Update Task Status</h1>
-
-<div asp-validation-summary="All" class="text-danger"></div>
+<h1 class="mb-4">Update Task Status</h1>
 
 <form asp-action="Edit" method="post">
+
+  <div asp-validation-summary="All" class="text-danger mb-3"></div>
 
   <input type="hidden" asp-for="Id" />
 
   <div class="mb-3">
-
     <label asp-for="Status"></label>
+
     <select asp-for="Status" class="form-select">
       <option value="">-- Select Status --</option>
       @foreach (var status in TaskStatuses.All)
@@ -19,9 +19,14 @@
         <option value="@status">@status</option>
       }
     </select>
-
   </div>
 
-  <button type="submit" class="btn btn-primary">Update Status</button>
+  <button type="submit" class="btn btn-warning">
+    Update Status
+  </button>
+
+  <a asp-action="Index" class="btn btn-secondary">
+    Cancel
+  </a>
 
 </form>
