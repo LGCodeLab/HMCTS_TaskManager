@@ -1,6 +1,6 @@
-using System.Diagnostics;
 using HMCTS_TaskManager.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace HMCTS_TaskManager.Controllers
 {
@@ -14,11 +14,6 @@ namespace HMCTS_TaskManager.Controllers
         }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
