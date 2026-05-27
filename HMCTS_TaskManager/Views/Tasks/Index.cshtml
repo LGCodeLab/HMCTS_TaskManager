@@ -1,5 +1,5 @@
-﻿@model IEnumerable<HMCTS_TaskManager.Models.TaskItem>
-@using HMCTS_TaskManager.Constants
+﻿@using HMCTS_TaskManager.Constants
+@model IEnumerable<HMCTS_TaskManager.Models.TaskItem>
 
 <h1 class="mb-4">Task Manager</h1>
 
@@ -60,17 +60,19 @@ else
           </td>
 
           <td>
-            <a asp-action="Edit"
-               asp-route-id="@task.Id"
-               class="btn btn-sm btn-warning">
-              Update Status
-            </a>
-            |
-            <a asp-action="Delete"
-               asp-route-id="@task.Id"
-               class="btn btn-sm btn-danger">
-              Delete
-            </a>
+            <div class="d-flex gap-2">
+              <a asp-action="Edit"
+                 asp-route-id="@task.Id"
+                 class="btn btn-sm btn-warning">
+                Update Status
+              </a>
+
+              <a asp-action="Delete"
+                 asp-route-id="@task.Id"
+                 class="btn btn-sm btn-danger">
+                Delete
+              </a>
+            </div>
           </td>
         </tr>
       }
