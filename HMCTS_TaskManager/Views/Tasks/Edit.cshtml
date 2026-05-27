@@ -1,7 +1,7 @@
-﻿@model HMCTS_TaskManager.Models.TaskItem
-@using HMCTS_TaskManager.Constants
+﻿@using HMCTS_TaskManager.Constants
+@model HMCTS_TaskManager.Models.TaskItem
 
-<h1 class="mb-4">Update Task Status</h1>
+<h1 class="mb-4">Edit Task Status</h1>
 
 <form asp-action="Edit" method="post">
 
@@ -10,7 +10,7 @@
   <input type="hidden" asp-for="Id" />
 
   <div class="mb-3">
-    <label asp-for="Status"></label>
+    <label asp-for="Status" class="form-label"></label>
 
     <select asp-for="Status" class="form-select">
       <option value="">-- Select Status --</option>
@@ -21,7 +21,7 @@
     </select>
   </div>
 
-  <button type="submit" class="btn btn-warning">
+  <button type="submit" class="btn btn-warning me-2">
     Update Status
   </button>
 
