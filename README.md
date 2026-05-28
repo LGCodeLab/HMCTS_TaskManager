@@ -1,4 +1,4 @@
-﻿﻿# HMCTS Task Manager
+﻿# HMCTS Task Manager
 
 ## Overview
 
