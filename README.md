@@ -1,4 +1,4 @@
-﻿# HMCTS Task Manager
+﻿﻿# HMCTS Task Manager
 
 ## Overview
 
@@ -29,15 +29,17 @@ The application allows users to create, view, update, and delete tasks through a
 
 ## Running the Application
 
-### 1. Clone the repository
+### 1. Clone the Repository
+Run the following command in a terminal (e.g Visual Studio Developer PowerShell)
 
 ```bash
 git clone https://github.com/LGCodeLab/HMCTS_TaskManager.git
 ```
+
 ### 2. Navigate to the project folder
 
 ```bash
-cd HMCTS_TaskManager
+cd .\HMCTS_TaskManager\
 ```
 
 ### 3. Restore dependencies
@@ -46,20 +48,27 @@ cd HMCTS_TaskManager
 dotnet restore
 ```
 
-### 4. Apply database migrations
+### 4. Install EF Core CLI tools (if not already installed)
 
 ```bash
-dotnet ef database update
+dotnet tool install --global dotnet-ef
 ```
-### 5. Run the application
+
+### 5. Apply database migrations
 
 ```bash
-dotnet run
+dotnet ef database update --project HMCTS_TaskManager/HMCTS_TaskManager.csproj
+```
+### 6. Run the application
+
+```bash
+dotnet run --project HMCTS_TaskManager/HMCTS_TaskManager.csproj
 ```
 
-The application will then be available in your browser at the provided local URL.
+The application will start and be available at the local URL shown in the console output (for example, https://localhost:5001).
 
 ## Running Unit Tests
+Run the following command from the project root
 
 ```bash
 dotnet test
